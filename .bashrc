@@ -66,8 +66,7 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    PS1="${debian_chroot:+($debian_chroot)}\u@\h \w\a$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -114,10 +113,16 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# to change terminal window title on ssh
+# to change terminal window title on ssh and telnet
 ssh() {
 	params=$*
 	title=`echo $params | egrep -oi '[0-9a-z.]*\.[0-9a-z.]*'`
 	echo -en "\033]0;$title\a"
 	/usr/bin/ssh $params
+}
+telnet() {
+	params=$*
+	title=`echo $params | egrep -oi '[0-9a-z.]*\.[0-9a-z.]*'`
+	echo -en "\033]0;$title\a"
+	/usr/bin/telnet $params
 }
