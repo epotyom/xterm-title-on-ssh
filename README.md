@@ -10,7 +10,7 @@ A little modofication of .bashrc script, that set tab title in gnome terminal as
 usage
 =====
 
-You can replace whole .bashrc file in your home directory with this one, or you can just add a few lines to the and of your .bashrc:
+You can replace whole .bashrc file in your home directory with this one, or you can just add a few lines to the end of your .bashrc:
 ```bash
 ssh() {
         params=$*
